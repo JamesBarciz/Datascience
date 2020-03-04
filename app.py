@@ -2,7 +2,7 @@ import pandas as pd
 from flask import Flask, jsonify, request
 import pickle
 
-# Load the model from model.pkl file
+# Load the model from berlin_model.pkl file
 model = pickle.load(open('berlin_model.pkl', 'rb'))
 
 # App
@@ -10,22 +10,24 @@ app = Flask(__name__)
 
 # Routes
 @app.route('/', methods=['POST'])
+def Optimal_Price():
+    return "Get Optimal Price"
 
-def predict():
-    # Get the data
-    data = request.get_json(force=True)
+def predict_price():
+    # Takes data entered via post request
+    feature_data = request.get_json(force=True)
 
     # Convert the data into a dataframe
-    data.update((x, [y]) for x, y in data.items())
-    data_df = pd.DataFrame.from_dict(data)
+    feature_data.update((x, [y]) for x, y in feature_data.items())
+    df = pd.DataFrame.from_dict(feature_data)
 
-    # Predictions
-    result = model.predict(data_df)
+    # Prediction based on the feature values
+    result = model.predict(df)
 
     # Output which is sent to browser
     output = {'results': int(result[0])}
 
-    # Return the data as JSON
+    # Return the predicted value as JSON
     return jsonify(results=output)
 
 if __name__ == "__main__":
