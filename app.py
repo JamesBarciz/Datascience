@@ -29,6 +29,10 @@ model = pickle.load(open('berlin_model.pkl', 'rb'))
 # App
 app = Flask(__name__)
 
+# Could Remove: vvvv
+# Setting this to True makes the returned JSON look not-so-jumbled
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
 ### FOR DATABASE ###
 # class AirBnB_features(db.Model):
 #     id = db.Column(db.BigInteger, primary_key=True)
@@ -116,8 +120,8 @@ def predict_price():
     # convert to JSON.  The prediction is rounded to the nearest integer.
     results = int(model.predict(df)[0])
 
-    # Return the predicted price as JSON
-    return jsonify(price=results)
+    # Return the features and predicted price as JSON
+    return jsonify(features=data, price=results)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
