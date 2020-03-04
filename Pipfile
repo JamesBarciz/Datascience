@@ -16,6 +16,7 @@ numpy = "*"
 sklearn = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.7"

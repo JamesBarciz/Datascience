@@ -1,5 +1,6 @@
 import pandas as pd
 from flask import Flask, jsonify, request, render_template
+import joblib                               ## TO unpack
 import pickle                             ## To use .pkl model
 import json                               ## To load in 'features.json'
 # from flask_sqlalchemy import SQLAlchemy ## Use with db
@@ -23,8 +24,9 @@ import json                               ## To load in 'features.json'
 #                         password='DB_PASS', host='DB_HOST')
 # cur = conn.cursor()
 
-# Load the model from 'berlin_model.pkl' file
-model = pickle.load(open('berlin_model.pkl', 'rb'))
+# Load the model from 'berlin_model.pkl' file or 'berlin_model.gz'
+# model = pickle.load(open('berlin_model.pkl', 'rb'))
+model = joblib.load(open('berlin_model.gz', 'rb'))
 
 # App
 app = Flask(__name__)
