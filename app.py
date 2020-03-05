@@ -1,5 +1,5 @@
 import pandas as pd
-from pandas.io.json import json_normalize
+# from pandas.io.json import json_normalize
 from flask import Flask, jsonify, request, render_template
 import joblib                               ## TO unpack
 import pickle                             ## To use .pkl model
