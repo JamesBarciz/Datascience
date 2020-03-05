@@ -1,4 +1,5 @@
 import pandas as pd
+from pandas.io.json import json_normalize
 from flask import Flask, jsonify, request, render_template
 import joblib                               ## TO unpack
 import pickle                             ## To use .pkl model
@@ -126,7 +127,8 @@ def predict_price():
     results = int(model.predict(df)[0])
 
     # Return the features and predicted price as JSON
-    return jsonify(features=data, price=results)
+    # return jsonify(features=data, price=results)
+    return jsonify(price=results)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
