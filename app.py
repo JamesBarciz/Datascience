@@ -106,7 +106,10 @@ def predict_price():
         features_dict = json.load(f)
         for key, value in data.items():
             if key in features_dict:
-                features_dict[key] = float(value)
+                try:
+                    features_dict[key] = float(value)
+                except:
+                    features_dict[key] = 0
             elif value in features_dict:
                 features_dict[value] = 1
         # print(features_dict)
