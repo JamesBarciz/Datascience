@@ -101,7 +101,7 @@ def predict_price():
     # was.  For features that have multiple permutations (neighbourhood_group_cleansed, etc),
     # whichever was chosen in the drop-down list will be reassigned as an integer(1) while
     # the others remain an integer(0) which denotes that the listing is not a particular
-    # feature permutation and thus, can be ran through pickeled model.
+    # feature permutation and thus, can be ran through the model.
     with open('features.json', 'r') as f:
         features_dict = json.load(f)
         for key, value in data.items():
