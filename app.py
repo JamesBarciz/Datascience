@@ -1,7 +1,7 @@
 import pandas as pd
 from flask import Flask, jsonify, request, render_template
-import joblib                               # TO unpack
-import pickle                             # To use .pkl model
+import joblib                               # TO unpack .gz
+# import pickle                             # To use .pkl model
 import json                               # To load in 'features.json'
 
 # Load the model from 'berlin_model.pkl' file or 'berlin_model.gz'
